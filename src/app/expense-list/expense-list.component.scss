@@ -1,0 +1,55 @@
+/* Styling for Expense List */
+.container {
+    max-width: 600px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    font-size: 18px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    transition: background 0.3s ease-in-out;
+}
+
+.list-group-item:hover {
+    background: #e9ecef;
+}
+
+.badge {
+    font-size: 16px;
+    padding: 8px 12px;
+}
+
+.alert-danger {
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 6px;
+    background: #f8f9fa;
+}

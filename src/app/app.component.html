@@ -1,0 +1,36 @@
+<!-- Centered Container -->
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1>Splitwise Clone</h1>
+  </div>
+
+  <!-- PrimeNG TabView for Better UI -->
+  <p-tabView [(activeIndex)]="activeIndex" class="styled-tabs">
+    <p-tabPanel header="My Expenses">
+      <div class="grid">
+        <!-- Expense Form Component -->
+        <p-card class="card-form">
+          <h2>Add Expense</h2>
+          <app-expense-form (expenseAdded)="onExpenseAdded($event)"></app-expense-form>
+        </p-card>
+
+        <!-- Expense List Component -->
+        <p-card class="card-list">
+          <h2>Expense List</h2>
+          <app-expense-list></app-expense-list>
+        </p-card>
+      </div>
+    </p-tabPanel>
+
+    <!-- Groups Tab -->
+    <p-tabPanel header="Groups">
+      <app-groups></app-groups>
+    </p-tabPanel>
+
+    <!-- Users Tab -->
+    <p-tabPanel header="Users">
+      <app-users></app-users>
+    </p-tabPanel>
+  </p-tabView>
+</div>

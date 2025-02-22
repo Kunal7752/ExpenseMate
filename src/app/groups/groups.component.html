@@ -1,0 +1,31 @@
+<div class="groups-container">
+    <p-card class="card-form">
+      <h2>Create Group</h2>
+      <form [formGroup]="groupForm" (ngSubmit)="onSubmitGroup()">
+        <div class="p-field">
+          <label for="groupName">Group Name</label>
+          <input id="groupName" type="text" pInputText formControlName="groupName" placeholder="Enter group name" />
+        </div>
+        <button pButton type="submit" label="Create Group" class="p-mt-3 p-button-primary"></button>
+      </form>
+    </p-card>
+  
+    <p-card class="card-list">
+      <h2>Groups List</h2>
+      <p-table [value]="groups" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th>Users</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-group>
+          <tr>
+            <td>{{ group.name }}</td>
+            <td>{{ group.users ? group.users.join(', ') : 'None' }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+  
