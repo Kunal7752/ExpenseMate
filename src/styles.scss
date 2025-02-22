@@ -1,0 +1,125 @@
+/* Global Styling */
+body {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7fc; /* Light background for contrast */
+    // display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    //padding-top: 40px; /* Increased top padding */
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    // padding: 15px 30px;
+    // border-radius: 10px;
+    display: inline-block;
+    // margin-bottom: 30px;
+    font-size: 24px;
+    // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Unified container for form and expenses */
+.expense-container {
+    width: 450px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.main-div {
+    width: 100%;
+    text-align: center;
+    background-color: black;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* Form and Inputs */
+.form-label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input.form-control {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px; /* More spacing between inputs */
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Expense List */
+.list-group-item {
+    font-size: 18px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    transition: background 0.3s ease-in-out;
+    background: #f8f9fa;
+    margin-bottom: 8px;
+}
+
+.list-group-item:hover {
+    background: #e9ecef;
+}
+
+/* Expense Amount */
+.expense-amount {
+    font-size: 16px;
+    padding: 10px 16px;
+    background: #007bff;
+    color: white;
+    border-radius: 8px;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Center all elements */
+.expense-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}

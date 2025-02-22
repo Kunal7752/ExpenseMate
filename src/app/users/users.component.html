@@ -1,0 +1,21 @@
+<div class="users-container">
+    <p-card class="card-form">
+      <h2>Register User</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmitUser()">
+        <div class="p-field">
+          <label for="username">Username</label>
+          <div class="user-input">
+          <input id="username" type="text" pInputText formControlName="username" placeholder="Enter username" />
+        </div>
+        </div>
+        <div class="p-field">
+          <label for="password">Password</label>
+          <div class="user-input">
+          <input id="password" type="password" pInputText formControlName="password" placeholder="Enter password" />
+          </div>
+        </div>
+        <button pButton type="submit" label="Register" class="p-mt-3 p-button-primary"></button>
+      </form>
+    </p-card>
+  </div>
+  

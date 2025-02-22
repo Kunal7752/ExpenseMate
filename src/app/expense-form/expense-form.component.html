@@ -1,0 +1,94 @@
+<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+  <!-- ✅ Multi-Select User Dropdown -->
+  <div class="p-field">
+    <label for="users">Select Users</label>
+    <div class="expense-input">
+      <p-multiSelect 
+        [options]="users" 
+        optionLabel="username" 
+        optionValue="id" 
+        formControlName="userIds" 
+        placeholder="Select users"
+        (onChange)="updateSplitAmounts()">
+      </p-multiSelect>
+    </div>
+    <div *ngIf="userIds.invalid && (userIds.dirty || userIds.touched)">
+      <span>At least one user must be selected.</span>
+    </div>
+  </div>
+
+  <!-- ✅ Description Input -->
+  <div class="p-field">
+    <label for="description">Description</label>
+    <div class="expense-input">
+      <input id="description" type="text" pInputText formControlName="description" />
+    </div>
+    <div *ngIf="description.invalid && (description.dirty || description.touched)">
+      <div *ngIf="description.errors?.['required']">
+        <span>Description is required.</span>
+      </div>
+      <div *ngIf="description.errors?.['minlength']">
+        <span>Must be at least 3 characters.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Amount Input -->
+  <div class="p-field">
+    <label for="amount">Amount</label>
+    <div class="expense-input">
+      <input id="amount" type="number" pInputText formControlName="amount" (input)="updateSplitAmounts()" />
+    </div>
+    <div *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+      <div *ngIf="amount.errors?.['required']">
+        <span>Amount is required.</span>
+      </div>
+      <div *ngIf="amount.errors?.['min']">
+        <span>Amount must be at least $1.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Type of Split Dropdown -->
+  <div class="p-field">
+    <label for="typeOfSplit">Type of Split</label>
+    <div class="expense-input">
+      <p-dropdown 
+        [options]="splitType" 
+        optionLabel="label" 
+        optionValue="value" 
+        formControlName="type" 
+        placeholder="Select Split Type" 
+        (onChange)="updateSplitAmounts()">
+      </p-dropdown>
+    </div>
+    <div *ngIf="type.invalid && (type.dirty || type.touched)">
+      <span>Type of split is required.</span>
+    </div>
+  </div>
+
+  <!-- ✅ Split Calculation Display -->
+  <div *ngIf="splitAmounts.length && expenseForm.value.type === 'equal'">
+    <h4>Equal Split Details:</h4>
+    <ul>
+      <li *ngFor="let split of splitAmounts">
+        {{ split.username }}: ${{ split.amount | number: '1.2-2' }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- ✅ Unequal Split Custom Inputs -->
+  <div *ngIf="expenseForm.value.type === 'unequal'">
+    <h4>Enter Custom Split Amounts</h4>
+    <div *ngFor="let split of splitAmounts; let i = index">
+      <label>{{ split.username }}</label>
+      <input type="number" [(ngModel)]="split.amount" (input)="validateUnequalSplit()" />
+    </div>
+    <div *ngIf="!splitValid">
+      <span class="error-text">Split amounts must sum up to the total expense amount.</span>
+    </div>
+  </div>
+
+  <!-- ✅ Submit Button -->
+  <button pButton type="submit" label="Add Expense" [disabled]="expenseForm.invalid || !splitValid"></button>
+</form>
